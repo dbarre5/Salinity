@@ -26,6 +26,7 @@ contour2 = Contour(Input=extractComponent1)
 contour2.ContourBy = ['POINTS', 'Ux']
 contour2.Isosurfaces = [0.0]
 
+
 meshQuality1 = MeshQuality(Input=contour2)
 meshQuality1.TriangleQualityMeasure = 'Area'
 meshQuality1.QuadQualityMeasure = 'Area'
@@ -66,7 +67,11 @@ contour3 = Contour(Input=extractComponent2)
 contour3.ContourBy = ['POINTS', 'Ux']
 contour3.Isosurfaces = [0.0]
 
-meshQuality2 = MeshQuality(Input=contour3)
+generateSurfaceNormals1 = GenerateSurfaceNormals(registrationName='GenerateSurfaceNormals1', Input=contour3)
+# Properties modified on generateSurfaceNormals1
+generateSurfaceNormals1.ComputeCellNormals = 1
+
+meshQuality2 = MeshQuality(Input=generateSurfaceNormals1)
 meshQuality2.TriangleQualityMeasure = 'Area'
 meshQuality2.QuadQualityMeasure = 'Area'
 
